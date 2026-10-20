@@ -1,0 +1,373 @@
+@import "tailwindcss";
+
+/* Mezo marketing fonts (Riforma LL + GT Alpina) - same files served on mezo.org */
+@font-face {
+  font-family: "Riforma LL";
+  src: url("/fonts/riforma/RiformaLLWeb-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Riforma LL";
+  src: url("/fonts/riforma/RiformaLLWeb-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Riforma LL";
+  src: url("/fonts/riforma/RiformaLLWeb-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Riforma LL";
+  src: url("/fonts/riforma/RiformaLLWeb-Heavy.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GT Alpina";
+  src: url("/fonts/gtalpina/GT-Alpina-Standard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GT Alpina";
+  src: url("/fonts/gtalpina/GT-Alpina-Standard-Regular-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --mezo-pink: #e6005c;
+  --mezo-pink-soft: #fdeef1;
+  --mezo-ink: #111111;
+  --mezo-muted: #666666;
+  --mezo-line: #ebebe8;
+  --mezo-wash: #f7f7f5;
+  --mezo-card: #ffffff;
+  --background: #f7f7f5;
+  --foreground: #111111;
+  --radius-card: 1.35rem;
+  --shadow-soft: 0 1px 0 rgba(17, 17, 17, 0.03), 0 18px 40px -32px rgba(17, 17, 17, 0.28);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-mezo-pink: var(--mezo-pink);
+  --color-mezo-ink: var(--mezo-ink);
+  --color-mezo-muted: var(--mezo-muted);
+  --color-mezo-wash: var(--mezo-wash);
+  --font-sans: "Riforma LL", system-ui, sans-serif;
+  --font-serif: "GT Alpina", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Riforma LL", system-ui, sans-serif;
+  font-feature-settings: "kern", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #e6005c;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #e6005c;
+  outline-offset: 2px;
+}
+
+.font-serif-italic {
+  font-family: "GT Alpina", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.text-gradient-mezo {
+  background: linear-gradient(105deg, #ff2d78 0%, #e6005c 55%, #c4004a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app-canvas {
+  background:
+    radial-gradient(1200px 480px at 12% -10%, rgba(230, 0, 92, 0.06), transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, rgba(17, 17, 17, 0.04), transparent 50%),
+    #f7f7f5;
+}
+
+.card-mezo {
+  border: 1px solid var(--mezo-line);
+  border-radius: var(--radius-card);
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.card-mezo-hover:hover {
+  border-color: color-mix(in srgb, #e6005c 28%, #ebebe8);
+  box-shadow: 0 16px 40px -28px rgba(17, 17, 17, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: #e6005c;
+  padding: 0.8rem 1.55rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0 10px 24px -14px rgba(230, 0, 92, 0.75);
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+.btn-primary:hover {
+  background: #c4004a;
+  box-shadow: 0 12px 28px -14px rgba(196, 0, 74, 0.8);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: #111;
+  padding: 0.8rem 1.55rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #fff;
+  transition: background 160ms ease, transform 160ms ease;
+}
+.btn-secondary:hover {
+  background: #000;
+}
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  background: rgba(17, 17, 17, 0.04);
+  padding: 0.55rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #333;
+  transition: background 160ms ease;
+}
+.btn-ghost:hover {
+  background: rgba(17, 17, 17, 0.08);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e6005c;
+}
+
+.section-title {
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #111;
+}
+
+.pill {
+  border-radius: 9999px;
+}
+
+.input-mezo {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid #e8e8e8;
+  background: #f7f7f5;
+  padding: 0.75rem 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #111;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.input-mezo:hover {
+  background: #f3f3f1;
+}
+.input-mezo:focus {
+  border-color: #e6005c;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(230, 0, 92, 0.12);
+}
+
+.scroll-soft {
+  scrollbar-width: thin;
+  scrollbar-color: #ddd transparent;
+}
+.scroll-soft::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-soft::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 999px;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Consistent left / right page splits */
+.split-desk {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .split-desk {
+    grid-template-columns: minmax(0, 1.35fr) minmax(22rem, 0.78fr);
+    gap: 1.75rem 2rem;
+  }
+}
+
+.split-book {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .split-book {
+    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.72fr);
+    gap: 1.5rem 1.75rem;
+  }
+}
+
+.split-equal {
+  display: grid;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+@media (min-width: 1024px) {
+  .split-equal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.split-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 1024px) {
+  .split-rail {
+    position: sticky;
+    top: 5.75rem;
+    align-self: start;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ddd transparent;
+  }
+}
+
+.split-pair {
+  display: grid;
+  gap: 0;
+}
+@media (min-width: 768px) {
+  .split-pair {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.split-pair-wide-left {
+  display: grid;
+  gap: 0;
+}
+@media (min-width: 768px) {
+  .split-pair-wide-left {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+}
+
+.split-pair-wide-right {
+  display: grid;
+  gap: 0;
+}
+@media (min-width: 768px) {
+  .split-pair-wide-right {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}
+
+.split-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .split-row {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+  .split-row > :last-child {
+    text-align: right;
+    flex-shrink: 0;
+  }
+}
