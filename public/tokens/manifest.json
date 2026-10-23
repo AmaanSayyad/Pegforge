@@ -1,0 +1,22 @@
+{
+  "nvda": {
+    "id": "nvidia-xstock",
+    "name": "NVIDIA xStock",
+    "symbol": "nvdax",
+    "image": "https://coin-images.coingecko.com/coins/images/55633/large/Ticker_NVDA__Company_Name_NVIDIA_Corp__size_200x200_2x.png?1746862704"
+  },
+  "aapl": {
+    "id": "apple-xstock",
+    "name": "Apple xStock",
+    "symbol": "aaplx",
+    "image": "https://coin-images.coingecko.com/coins/images/55586/large/Ticker_AAPL__Company_Name_Apple_Inc.__size_200x200_2x.png?1746807196"
+  },
+  "msft": null,
+  "amzn": null,
+  "googl": null,
+  "meta": null,
+  "tsla": null,
+  "gold": null,
+  "silver": null,
+  "btc": null
+}

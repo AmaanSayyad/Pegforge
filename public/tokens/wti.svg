@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="28" fill="#1c1c1c"/>
+  <ellipse cx="64" cy="36" rx="30" ry="9" fill="#3d3d3d"/>
+  <rect x="34" y="36" width="60" height="62" fill="#2a2a2a"/>
+  <ellipse cx="64" cy="98" rx="30" ry="9" fill="#1a1a1a"/>
+  <ellipse cx="64" cy="36" rx="30" ry="9" fill="none" stroke="#666" stroke-width="2"/>
+  <path d="M34 36v62c0 5 13.4 9 30 9s30-4 30-9V36" fill="none" stroke="#555" stroke-width="2"/>
+  <line x1="34" y1="52" x2="94" y2="52" stroke="#555" stroke-width="2"/>
+  <line x1="34" y1="68" x2="94" y2="68" stroke="#555" stroke-width="2"/>
+  <line x1="34" y1="84" x2="94" y2="84" stroke="#555" stroke-width="2"/>
+  <path d="M64 44c0 0 12 16 12 26a12 12 0 1 1-24 0c0-10 12-26 12-26z" fill="#FF6A00"/>
+  <path d="M64 50c0 0 7 10 7 18a7 7 0 1 1-14 0c0-8 7-18 7-18z" fill="#FFB347"/>
+  <text x="64" y="118" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#888">WTI</text>
+</svg>
