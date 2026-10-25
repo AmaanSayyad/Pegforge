@@ -18,6 +18,7 @@
 | Resource | URL |
 | --- | --- |
 | Live app | https://pegforge.fun/ |
+| Production domain | pegforge.fun (Vercel) |
 | GitHub | https://github.com/AmaanSayyad/Pegforge |
 | Docs / deck | https://docs.google.com/presentation/d/1v-qFfd9zo1iIgxf8qA5QQelKbGhm77qaKKT5u84V_o4/edit?usp=sharing |
 | Demo video | https://drive.google.com/drive/folders/1E7IDlaauJUveBYRReMbSuH_9d9sgYQU9?usp=sharing |
