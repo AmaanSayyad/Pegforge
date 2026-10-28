@@ -222,11 +222,12 @@ export function useBridgeFlow(asset: CollateralAsset, units: string) {
         await ensureChain(mezoTestnet.id);
         setStep("borrow");
         setProgress({ n: 1, of: 1, label: "Express loan" });
+        const portal = PEGORGE_PORTAL_ADDRESS!;
         await sendAndWait(
           `MetaMask: wrap ${asset.ticker} + borrow ${borrowMusd} MUSD (1 confirm)`,
           () =>
             writeContractAsync({
-              address: PEGORGE_PORTAL_ADDRESS,
+              address: portal,
               abi: portalAbi,
               functionName: "expressLoan",
               args: [
@@ -451,11 +452,12 @@ export function useBridgeFlow(asset: CollateralAsset, units: string) {
       }
 
       await ensureChain(mezoTestnet.id);
+      const portal = PEGORGE_PORTAL_ADDRESS!;
       await sendAndWait(
         `Claim Sepolia/Base lock → borrow ${borrowMusd} MUSD (1 Mezo confirm)`,
         () =>
           writeContractAsync({
-            address: PEGORGE_PORTAL_ADDRESS,
+            address: portal,
             abi: portalAbi,
             functionName: "claimExpressLoan",
             args: [

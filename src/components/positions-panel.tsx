@@ -347,14 +347,18 @@ function PositionRow({
 
           <WalletImportStrip
             note={`MetaMask shows 0 ${position.asset.ticker} because these shares are locked as collateral. Import to list the token; MUSD should show a real balance.`}
-            collateral={{
-              address: position.token,
-              symbol: position.asset.ticker,
-              image:
-                typeof window !== "undefined"
-                  ? `${window.location.origin}${position.asset.logo}`
-                  : undefined,
-            }}
+            collateral={
+              position.token
+                ? {
+                    address: position.token,
+                    symbol: position.asset.ticker,
+                    image:
+                      typeof window !== "undefined"
+                        ? `${window.location.origin}${position.asset.logo}`
+                        : undefined,
+                  }
+                : undefined
+            }
           />
 
           <SegmentedControl

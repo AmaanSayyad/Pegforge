@@ -27,8 +27,9 @@ export const RWA_MARKET_ADDRESS = {
     | undefined,
 } as const;
 
-export const PEGORGE_PORTAL_ADDRESS = (process.env.NEXT_PUBLIC_PEGORGE_PORTAL ||
-  undefined) as Address | undefined;
+export const PEGORGE_PORTAL_ADDRESS = process.env.NEXT_PUBLIC_PEGORGE_PORTAL
+  ? (process.env.NEXT_PUBLIC_PEGORGE_PORTAL as Address)
+  : undefined;
 
 export const erc20Abi = [
   {
