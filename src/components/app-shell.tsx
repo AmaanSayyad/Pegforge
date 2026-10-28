@@ -95,14 +95,14 @@ export function AppShell({
         </div>
       </aside>
 
-      <div className="flex min-w-0 flex-1 flex-col pb-[4.75rem] lg:pb-0">
+      <div className="app-main-pad flex min-w-0 flex-1 flex-col lg:pb-0">
         <header className="sticky top-0 z-40 border-b border-[#ebebe8]/80 bg-[#f7f7f5]/80 backdrop-blur-xl">
-          <div className="flex h-[4.25rem] items-center justify-between gap-3 px-4 md:px-7">
-            <div className="flex min-w-0 items-center gap-3">
-              <div className="lg:hidden">
-                <Logo size="sm" />
+          <div className="flex h-14 items-center justify-between gap-2 px-3 sm:h-[4.25rem] sm:gap-3 sm:px-4 md:px-7">
+            <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+              <div className="min-w-0 lg:hidden">
+                <Logo size="sm" compactWordmark />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 max-lg:hidden lg:block">
                 <p className="hidden text-[11px] font-medium uppercase tracking-[0.14em] text-[#aaa] lg:block">
                   Pegforge app
                 </p>
@@ -117,11 +117,14 @@ export function AppShell({
                   ) : null}
                 </div>
               </div>
+              <h1 className="truncate text-[14px] font-semibold tracking-[-0.03em] text-[#111] lg:hidden">
+                {title}
+              </h1>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
               <Link
                 href="/forge"
-                className="btn-primary hidden !px-4 !py-2 text-[13px] sm:inline-flex"
+                className="btn-primary !hidden !px-4 !py-2 text-[13px] md:!inline-flex"
               >
                 Desk
               </Link>
@@ -130,16 +133,16 @@ export function AppShell({
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-[72rem] flex-1 px-4 py-6 md:px-7 md:py-8 xl:px-9">
+        <main className="mx-auto w-full min-w-0 max-w-[72rem] flex-1 px-3 py-5 sm:px-4 sm:py-6 md:px-7 md:py-8 xl:px-9">
           {children}
         </main>
       </div>
 
       <nav
-        className="fixed inset-x-0 bottom-0 z-50 border-t border-[#ebebe8] bg-white/95 px-1 pb-[max(0.4rem,env(safe-area-inset-bottom))] pt-1 backdrop-blur-xl lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-50 border-t border-[#ebebe8] bg-white/95 px-0.5 pb-[max(0.35rem,env(safe-area-inset-bottom))] pt-1 backdrop-blur-xl lg:hidden"
         aria-label="Mobile app"
       >
-        <div className="mx-auto grid max-w-lg grid-cols-6 gap-0.5">
+        <div className="mx-auto grid max-w-lg grid-cols-6">
           {nav.map((item) => {
             const active = isActive(pathname, item.href);
             const Icon = item.icon;
@@ -148,19 +151,19 @@ export function AppShell({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex flex-col items-center gap-0.5 rounded-xl px-1 py-2 text-[10px] font-medium transition",
+                  "flex min-w-0 flex-col items-center gap-0.5 rounded-xl px-0.5 py-1.5 text-[9px] font-medium transition sm:px-1 sm:py-2 sm:text-[10px]",
                   active ? "text-[#e6005c]" : "text-[#888]",
                 )}
               >
                 <span
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full transition",
+                    "flex h-7 w-7 items-center justify-center rounded-full transition sm:h-8 sm:w-8",
                     active ? "bg-[#fdeef1]" : "bg-transparent",
                   )}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </span>
-                {item.short}
+                <span className="max-w-full truncate">{item.short}</span>
               </Link>
             );
           })}

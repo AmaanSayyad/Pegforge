@@ -290,57 +290,61 @@ function ActivityRow({ item, index }: { item: ActivityItem; index: number }) {
         className="group overflow-hidden transition hover:border-[#e6005c]/25 hover:shadow-[0_16px_40px_-32px_rgba(17,17,17,0.45)]"
         pad="none"
       >
-        <div className="flex gap-3.5 px-4 py-4 md:gap-4 md:px-5">
-          <span className="mt-0.5 flex h-11 w-[3.35rem] shrink-0 items-center justify-start">
-            {visual.mode === "pair" ? (
-              <TokenPair
-                collateralSrc={visual.collateralSrc}
-                collateralAlt={visual.collateralAlt}
-                size={42}
-              />
-            ) : (
-              <TokenIcon
-                src={visual.src}
-                alt={visual.alt}
-                size={42}
-                className="shadow-[0_10px_22px_-14px_rgba(17,17,17,0.55)] ring-black/8"
-              />
-            )}
-          </span>
+        <div className="flex flex-col gap-3 px-3.5 py-3.5 sm:flex-row sm:gap-3.5 sm:px-4 sm:py-4 md:gap-4 md:px-5">
+          <div className="flex min-w-0 flex-1 gap-3">
+            <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-start sm:w-[3.35rem]">
+              {visual.mode === "pair" ? (
+                <TokenPair
+                  collateralSrc={visual.collateralSrc}
+                  collateralAlt={visual.collateralAlt}
+                  size={42}
+                />
+              ) : (
+                <TokenIcon
+                  src={visual.src}
+                  alt={visual.alt}
+                  size={42}
+                  className="shadow-[0_10px_22px_-14px_rgba(17,17,17,0.55)] ring-black/8"
+                />
+              )}
+            </span>
 
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span
-                className={cn(
-                  "rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
-                  meta.tone,
-                )}
-              >
-                {meta.label}
-              </span>
-              {chain ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-[#f7f7f5] px-2 py-0.5 text-[10px] font-medium text-[#888]">
-                  <Link2 className="h-2.5 w-2.5" />
-                  {chain}
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <span
+                  className={cn(
+                    "rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+                    meta.tone,
+                  )}
+                >
+                  {meta.label}
                 </span>
-              ) : null}
-              <span className="text-[11px] text-[#bbb]">
-                {relativeTime(item.at)}
-              </span>
-            </div>
+                {chain ? (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[#f7f7f5] px-2 py-0.5 text-[10px] font-medium text-[#888]">
+                    <Link2 className="h-2.5 w-2.5" />
+                    {chain}
+                  </span>
+                ) : null}
+                <span className="text-[11px] text-[#bbb]">
+                  {relativeTime(item.at)}
+                </span>
+              </div>
 
-            <p className="mt-1.5 text-[15px] font-semibold tracking-[-0.02em] text-[#111]">
-              {item.title}
-            </p>
-            {item.detail ? (
-              <p className="mt-0.5 text-[13px] text-[#666]">{item.detail}</p>
-            ) : null}
-
-            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-[#999]">
-              <span>{new Date(item.at).toLocaleString()}</span>
-              {item.hash ? (
-                <span className="font-mono">{shortAddress(item.hash)}</span>
+              <p className="mt-1.5 break-words text-[14px] font-semibold tracking-[-0.02em] text-[#111] sm:text-[15px]">
+                {item.title}
+              </p>
+              {item.detail ? (
+                <p className="mt-0.5 break-words text-[13px] text-[#666]">
+                  {item.detail}
+                </p>
               ) : null}
+
+              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#999] sm:text-[12px]">
+                <span>{new Date(item.at).toLocaleString()}</span>
+                {item.hash ? (
+                  <span className="font-mono">{shortAddress(item.hash)}</span>
+                ) : null}
+              </div>
             </div>
           </div>
 
@@ -349,13 +353,13 @@ function ActivityRow({ item, index }: { item: ActivityItem; index: number }) {
               href={url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-9 shrink-0 items-center gap-1.5 self-start rounded-full bg-[#f7f7f5] px-3 text-[12px] font-medium text-[#111] transition group-hover:bg-[#fdeef1] group-hover:text-[#e6005c]"
+              className="inline-flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#f7f7f5] px-3 text-[12px] font-medium text-[#111] transition group-hover:bg-[#fdeef1] group-hover:text-[#e6005c] sm:w-auto sm:self-start"
             >
               Explorer
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
           ) : (
-            <span className="inline-flex h-9 shrink-0 items-center self-start rounded-full bg-[#f7f7f5] px-3 text-[12px] text-[#bbb]">
+            <span className="inline-flex h-9 w-full shrink-0 items-center justify-center rounded-full bg-[#f7f7f5] px-3 text-[12px] text-[#bbb] sm:w-auto sm:self-start">
               <Landmark className="mr-1 h-3.5 w-3.5" />
               Local
             </span>

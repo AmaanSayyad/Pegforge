@@ -33,17 +33,29 @@ export function PegforgeMark({
 export function Logo({
   className,
   size = "md",
+  compactWordmark = false,
 }: {
   className?: string;
   size?: "sm" | "md";
+  /** Hide the domain text on very narrow screens (keeps mark + tap target). */
+  compactWordmark?: boolean;
 }) {
   return (
-    <Link href="/" className={cn("inline-flex items-center gap-2.5", className)}>
-      <PegforgeMark className={size === "sm" ? "h-7 w-7" : "h-9 w-9"} />
+    <Link
+      href="/"
+      className={cn("inline-flex min-w-0 items-center gap-2 sm:gap-2.5", className)}
+    >
+      <PegforgeMark
+        className={cn(
+          "shrink-0",
+          size === "sm" ? "h-7 w-7" : "h-9 w-9",
+        )}
+      />
       <span
         className={cn(
-          "font-medium tracking-[-0.03em] text-[#111]",
-          size === "sm" ? "text-[17px]" : "text-[19px]",
+          "truncate font-medium tracking-[-0.03em] text-[#111]",
+          size === "sm" ? "text-[15px] sm:text-[17px]" : "text-[17px] sm:text-[19px]",
+          compactWordmark && "max-sm:hidden",
         )}
       >
         {SITE.domain}

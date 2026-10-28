@@ -69,7 +69,7 @@ function Pill({
 }) {
   const external = href.startsWith("http");
   const className =
-    "inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-1.5 text-[13px] font-medium text-white transition hover:bg-white hover:text-[#dc062b]";
+    "inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1.5 text-[12px] font-medium text-white transition hover:bg-white hover:text-[#dc062b] sm:px-3.5 sm:text-[13px]";
   const content = (
     <>
       {logo ? (
@@ -101,7 +101,7 @@ function Pill({
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#dc062b] font-sans text-white">
-      <div className="relative z-10 mx-auto max-w-6xl px-5 pb-8 pt-10 md:px-8 md:pt-12">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pb-8 pt-10 sm:px-5 md:px-8 md:pt-12">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.35fr)] lg:items-start">
           <Link href="/" className="inline-flex items-center gap-2.5">
             <PegforgeMark variant="white" className="h-8 w-8" />
@@ -110,15 +110,15 @@ export function Footer() {
             </span>
           </Link>
 
-          <div className="flex flex-col gap-3 lg:items-end">
-            <div className="flex flex-wrap gap-2 lg:justify-end">
+          <div className="flex min-w-0 flex-col gap-3 lg:items-end">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 lg:justify-end">
               {pillLinks.map((l) => (
                 <Pill key={l.label} href={l.href}>
                   {l.label}
                 </Pill>
               ))}
             </div>
-            <div className="flex flex-wrap items-center gap-2 lg:justify-end">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 lg:justify-end">
               <span className="text-[12px] font-medium text-white/70">
                 Built on
               </span>
@@ -139,15 +139,15 @@ export function Footer() {
               alt={a.alt}
               width={36}
               height={36}
-              className="h-9 w-9 rounded-full object-cover ring-2 ring-white/30"
+              className="h-8 w-8 rounded-full object-cover ring-2 ring-white/30 sm:h-9 sm:w-9"
             />
           ))}
-          <span className="ml-1 text-[13px] font-medium text-white/80">
+          <span className="ml-1 text-[12px] font-medium text-white/80 sm:text-[13px]">
             Stocks · Gold · Oil → MUSD
           </span>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-8 sm:max-w-md">
+        <div className="mt-12 grid grid-cols-2 gap-6 sm:max-w-md sm:gap-8">
           {columns.map((col) => (
             <div key={col.title}>
               <p className="text-[13px] font-medium tracking-[-0.02em] text-white">
@@ -195,10 +195,10 @@ export function Footer() {
       </div>
 
       <div
-        className="pointer-events-none relative z-0 select-none px-2 pb-4 pt-2 md:px-4"
+        className="pointer-events-none relative z-0 overflow-hidden select-none px-2 pb-4 pt-2 md:px-4"
         aria-hidden
       >
-        <p className="whitespace-nowrap text-center text-[14vw] font-bold leading-[1.15] tracking-[-0.06em] text-white md:text-[11vw] lg:text-[9rem]">
+        <p className="truncate text-center text-[11vw] font-bold leading-[1.15] tracking-[-0.06em] text-white sm:text-[12vw] md:text-[11vw] lg:text-[9rem]">
           {SITE.domain}
         </p>
       </div>

@@ -29,7 +29,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7f7f5] to-transparent" />
       </div>
 
-      <div className="relative mx-auto flex min-h-[min(78svh,820px)] max-w-4xl flex-col items-center justify-center px-5 py-20 text-center md:px-8 md:py-28">
+      <div className="relative mx-auto flex min-h-[min(78svh,820px)] max-w-4xl flex-col items-center justify-center px-4 py-16 text-center sm:px-5 sm:py-20 md:px-8 md:py-28">
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.04 }}
-          className="mt-4 font-serif text-[42px] font-medium leading-[1.05] tracking-[-0.03em] text-black md:text-[64px]"
+          className="mt-4 max-w-[18ch] font-serif text-[34px] font-medium leading-[1.08] tracking-[-0.03em] text-black sm:text-[42px] md:max-w-none md:text-[64px] md:leading-[1.05]"
         >
           Borrow against stocks, gold & oil
         </motion.h1>
@@ -51,7 +51,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.08 }}
-          className="mt-5 max-w-xl text-[17px] leading-relaxed text-[#444] md:text-[18px]"
+          className="mt-5 max-w-xl text-[15px] leading-relaxed text-[#444] sm:text-[17px] md:text-[18px]"
         >
           Express Desk wraps collateral on Mezo, locks it in the market, and
           borrows MUSD under LTV - then manage loans in Positions.
@@ -100,12 +100,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.18 }}
-          className="mt-9 flex flex-wrap items-center justify-center gap-3"
+          className="mt-9 flex w-full max-w-md flex-col items-stretch gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3"
         >
-          <Link href="/forge" className="btn-primary px-8">
+          <Link href="/forge" className="btn-primary justify-center px-8">
             Borrow now
           </Link>
-          <Link href="/portfolio" className="btn-secondary px-8">
+          <Link href="/portfolio" className="btn-secondary justify-center px-8">
             Open app
           </Link>
           <Link

@@ -206,12 +206,12 @@ export function ForgePanel() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/15" />
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:gap-4 sm:p-5 md:p-6">
             <div className="min-w-0 flex-1">
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/75">
                 Desk · Mezo testnet
               </p>
-              <h2 className="mt-1 max-w-[16ch] text-[26px] font-bold tracking-[-0.04em] text-white md:text-[32px]">
+              <h2 className="mt-1 max-w-[16ch] text-[22px] font-bold tracking-[-0.04em] text-white sm:text-[26px] md:text-[32px]">
                 Post {asset.name}. Take MUSD.
               </h2>
             </div>
@@ -234,7 +234,7 @@ export function ForgePanel() {
             , then Mezo <code className="rounded bg-[#f7f7f5] px-1">claimExpressLoan</code>{" "}
             must match that vault lockId before it mints and borrows.
           </p>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
             <button
               type="button"
               onClick={() => {
@@ -242,13 +242,14 @@ export function ForgePanel() {
                 bridge.setStep("connect");
               }}
               className={cn(
-                "rounded-full px-3.5 py-1.5 text-[12px] font-semibold transition",
+                "rounded-full px-3.5 py-2 text-left text-[12px] font-semibold transition sm:py-1.5",
                 bridge.mode === "express"
                   ? "bg-[#111] text-white"
                   : "bg-[#f3f3f3] text-[#666] hover:bg-[#ebebe8]",
               )}
             >
-              Express · 1 MetaMask confirm
+              <span className="sm:hidden">Express · 1 confirm</span>
+              <span className="hidden sm:inline">Express · 1 MetaMask confirm</span>
             </button>
             <button
               type="button"
@@ -257,13 +258,14 @@ export function ForgePanel() {
                 bridge.setStep("connect");
               }}
               className={cn(
-                "rounded-full px-3.5 py-1.5 text-[12px] font-semibold transition",
+                "rounded-full px-3.5 py-2 text-left text-[12px] font-semibold transition sm:py-1.5",
                 bridge.mode === "full"
                   ? "bg-[#111] text-white"
                   : "bg-[#f3f3f3] text-[#666] hover:bg-[#ebebe8]",
               )}
             >
-              Full bridge · Sepolia then Mezo
+              <span className="sm:hidden">Full bridge · source → Mezo</span>
+              <span className="hidden sm:inline">Full bridge · Sepolia then Mezo</span>
             </button>
           </div>
           <p className="mt-2 text-[12px] text-[#999]">
@@ -512,32 +514,36 @@ export function ForgePanel() {
             type="button"
             disabled={bridge.isPending || !plan.ok || bridge.step === "done"}
             onClick={() => void bridge.runNext(borrow)}
-            className="btn-primary mt-6 w-full"
+            className="btn-primary mt-6 w-full !px-4 text-[13px] sm:text-[15px]"
           >
             {bridge.isPending ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                {bridge.progress.label
-                  ? `${bridge.progress.n}/${bridge.progress.of} · ${bridge.progress.label}`
-                  : "Confirm in wallet…"}
+                <Loader2 className="h-4 w-4 shrink-0 animate-spin" />
+                <span className="truncate">
+                  {bridge.progress.label
+                    ? `${bridge.progress.n}/${bridge.progress.of} · ${bridge.progress.label}`
+                    : "Confirm in wallet…"}
+                </span>
               </>
             ) : bridge.step === "done" ? (
               <>
-                <CheckCircle2 className="h-4 w-4" /> Borrowed MUSD
+                <CheckCircle2 className="h-4 w-4 shrink-0" /> Borrowed MUSD
               </>
             ) : bridge.step === "borrow" ? (
               <>
                 <TokenIcon src="/tokens/musd.png" alt="" size={20} />
-                Retry borrow {borrow} MUSD
+                <span className="truncate">Retry borrow {borrow} MUSD</span>
               </>
             ) : (
               <>
                 <TokenIcon src={asset.logo} alt="" size={20} />
-                {bridge.mode === "express"
-                  ? `Borrow MUSD · 1 MetaMask confirm`
-                  : bridge.step === "connect" || bridge.step === "source_mint"
-                    ? `Start full bridge · ${bridge.route.protocolLabel}`
-                    : bridge.stepLabel}
+                <span className="truncate text-left">
+                  {bridge.mode === "express"
+                    ? `Borrow MUSD · 1 confirm`
+                    : bridge.step === "connect" || bridge.step === "source_mint"
+                      ? `Start full bridge`
+                      : bridge.stepLabel}
+                </span>
               </>
             )}
           </button>

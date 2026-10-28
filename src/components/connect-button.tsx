@@ -32,11 +32,14 @@ export function ConnectButton({ compact }: { compact?: boolean }) {
       type="button"
       onClick={() => open()}
       className={cn(
-        "btn-primary",
-        compact ? "!px-4 !py-2 text-[13px]" : "px-5 py-2.5 text-[14px]",
+        "btn-primary shrink-0 whitespace-nowrap",
+        compact
+          ? "!px-3 !py-2 text-[12px] sm:!px-4 sm:text-[13px]"
+          : "px-5 py-2.5 text-[14px]",
       )}
     >
-      Connect wallet
+      <span className="sm:hidden">{compact ? "Connect" : "Connect wallet"}</span>
+      <span className="hidden sm:inline">Connect wallet</span>
     </button>
   );
 }

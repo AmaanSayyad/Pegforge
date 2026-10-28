@@ -92,7 +92,7 @@ export function PositionsPanel() {
         />
       ) : (
         <>
-          <FadeIn className="sticky top-[4.25rem] z-20 grid gap-3 sm:grid-cols-3">
+          <FadeIn className="sticky top-14 z-20 grid gap-3 sm:top-[4.25rem] sm:grid-cols-3">
             <StatTile label="Positions" value={String(totals.count)} />
             <StatTile
               label="Collateral"

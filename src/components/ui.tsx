@@ -30,11 +30,11 @@ export function PageBanner({
         className,
       )}
     >
-      <div className="relative z-10 order-2 flex flex-col justify-center gap-3 px-5 py-6 md:order-1 md:px-7 md:py-8">
+      <div className="relative z-10 order-2 flex flex-col justify-center gap-2.5 px-4 py-5 sm:gap-3 sm:px-5 sm:py-6 md:order-1 md:px-7 md:py-8">
         {children}
       </div>
       {/* Full-bleed cover — padded 1600×721 arts keep chrome card borders inside the frame */}
-      <div className="relative order-1 min-h-[9.5rem] overflow-hidden bg-[#111] md:order-2 md:min-h-full">
+      <div className="relative order-1 min-h-[8.5rem] overflow-hidden bg-[#111] sm:min-h-[9.5rem] md:order-2 md:min-h-full">
         <Image
           src={src}
           alt={alt}
@@ -76,11 +76,11 @@ export function PageHeader({
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="max-w-[16ch] text-[26px] font-bold leading-[1.08] tracking-[-0.04em] text-white md:text-[32px]">
+          <h1 className="max-w-[16ch] text-[22px] font-bold leading-[1.08] tracking-[-0.04em] text-white sm:text-[26px] md:text-[32px]">
             {title}
           </h1>
           {description ? (
-            <p className="max-w-[36ch] text-[14px] leading-relaxed text-white/72 md:text-[15px]">
+            <p className="max-w-[36ch] text-[13px] leading-relaxed text-white/72 sm:text-[14px] md:text-[15px]">
               {description}
             </p>
           ) : null}
@@ -226,7 +226,7 @@ export function SegmentedControl<T extends string>({
   return (
     <div
       className={cn(
-        "inline-flex flex-wrap gap-1 rounded-full bg-white p-1 ring-1 ring-black/[0.05]",
+        "inline-flex max-w-full flex-wrap gap-1 rounded-full bg-white p-1 ring-1 ring-black/[0.05]",
         className,
       )}
     >
@@ -238,7 +238,7 @@ export function SegmentedControl<T extends string>({
             type="button"
             onClick={() => onChange(o.id)}
             className={cn(
-              "relative rounded-full px-4 py-2 text-[13px] font-medium transition",
+              "relative rounded-full px-3 py-1.5 text-[12px] font-medium transition sm:px-4 sm:py-2 sm:text-[13px]",
               active ? "text-white" : "text-[#666] hover:bg-[#f3f3f3] hover:text-[#111]",
             )}
           >

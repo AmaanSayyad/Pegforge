@@ -19,15 +19,15 @@ const categories: AssetCategory[] = ["equities", "metals", "energy"];
 
 export function BentoSection() {
   return (
-    <section className="bg-[#f7f7f5] px-5 py-12 md:px-8 md:py-16">
+    <section className="bg-[#f7f7f5] px-4 py-12 sm:px-5 md:px-8 md:py-16">
       <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-[minmax(0,1.55fr)_minmax(17rem,0.78fr)] lg:items-stretch">
         <div className="flex min-w-0 flex-col gap-4">
           <Link
             href="/forge"
             className="group split-pair-wide-left min-h-[240px] flex-1 overflow-hidden rounded-[1.5rem] ring-1 ring-black/[0.03] transition duration-300 hover:shadow-[0_20px_50px_-28px_rgba(17,17,17,0.45)]"
           >
-            <div className="flex flex-col justify-center bg-[#f3e6d4] p-7 md:p-9">
-              <h2 className="max-w-[16ch] text-[28px] font-bold tracking-[-0.04em] text-[#111] md:text-[34px]">
+            <div className="flex flex-col justify-center bg-[#f3e6d4] p-5 sm:p-7 md:p-9">
+              <h2 className="max-w-[16ch] text-[24px] font-bold tracking-[-0.04em] text-[#111] sm:text-[28px] md:text-[34px]">
                 Borrow with real assets
               </h2>
               <p className="mt-3 max-w-md text-[15px] leading-relaxed text-[#444]">
@@ -60,8 +60,8 @@ export function BentoSection() {
                 className="object-contain"
               />
             </div>
-            <div className="flex flex-col justify-center bg-[#f8e8e8] p-7 md:p-8">
-              <h2 className="max-w-[14ch] text-[26px] font-bold tracking-[-0.04em] text-[#111] md:text-[30px]">
+            <div className="flex flex-col justify-center bg-[#f8e8e8] p-5 sm:p-7 md:p-8">
+              <h2 className="max-w-[14ch] text-[22px] font-bold tracking-[-0.04em] text-[#111] sm:text-[26px] md:text-[30px]">
                 Keep your upside
               </h2>
               <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-[#444]">
@@ -78,9 +78,9 @@ export function BentoSection() {
           </div>
         </div>
 
-        <div className="relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-[1.5rem] bg-[#f8e8e8] p-7 lg:min-h-full md:p-8">
+        <div className="relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-[1.5rem] bg-[#f8e8e8] p-5 sm:p-7 lg:min-h-full md:p-8">
           <div>
-            <h2 className="max-w-[12ch] text-[26px] font-bold tracking-[-0.04em] text-[#111] md:text-[30px]">
+            <h2 className="max-w-[12ch] text-[22px] font-bold tracking-[-0.04em] text-[#111] sm:text-[26px] md:text-[30px]">
               Stability backed by Bitcoin
             </h2>
             <p className="mt-3 max-w-[28ch] text-[14px] leading-relaxed text-[#555]">
@@ -142,7 +142,7 @@ export function FeatureArtSection() {
 
   return (
     <section className="bg-[#f7f7f5] py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
         <p className="eyebrow">Collateral classes</p>
         <h2 className="section-title max-w-5xl md:max-w-none">
           Stocks, metals, and energy as MUSD collateral.
@@ -223,18 +223,18 @@ export function BorrowVisualSection() {
             sizes="176px"
           />
         </div>
-        <h2 className="font-serif text-[36px] font-medium leading-[1.1] tracking-[-0.03em] text-[#111] md:text-[48px]">
+        <h2 className="font-serif text-[28px] font-medium leading-[1.1] tracking-[-0.03em] text-[#111] sm:text-[36px] md:text-[48px]">
           Capitalize on what you hold.
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-relaxed text-[#555]">
+        <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-[#555] sm:text-[16px]">
           Live on Mezo testnet: wrap → deposit → borrow in a few MetaMask
           confirms. Track Activity, repay in Positions, move MUSD in Transact.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link href="/forge" className="btn-primary px-8">
+        <div className="mt-8 flex w-full max-w-sm flex-col items-stretch gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
+          <Link href="/forge" className="btn-primary justify-center px-8">
             Open Desk
           </Link>
-          <Link href="/portfolio" className="btn-secondary px-8">
+          <Link href="/portfolio" className="btn-secondary justify-center px-8">
             Open app
           </Link>
         </div>
@@ -246,13 +246,13 @@ export function BorrowVisualSection() {
 export function MarketsSection() {
   return (
     <section id="markets" className="bg-[#f7f7f5] py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
         <div className="max-w-5xl">
           <p className="eyebrow">Allowlisted collateral</p>
           <h2 className="section-title max-w-none">
             Come with what you already hold.
           </h2>
-          <p className="mt-4 max-w-4xl text-[17px] leading-relaxed text-[#666] md:text-[18px]">
+          <p className="mt-4 max-w-4xl text-[15px] leading-relaxed text-[#666] sm:text-[17px] md:text-[18px]">
             Famous US equities, precious metals, and energy - each with its own
             LTV and liquidation band. Marks as of {PRICE_AS_OF}.
           </p>
@@ -330,14 +330,14 @@ export function WhySection() {
 
   return (
     <section id="why" className="bg-[#f7f7f5] py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
         <div className="max-w-5xl">
           <p className="eyebrow">Why Mezo needs this</p>
           <h2 className="section-title max-w-none">
             More people. More collateral.{" "}
             <span className="text-gradient-mezo">More MUSD demand.</span>
           </h2>
-          <p className="mt-4 max-w-4xl text-[17px] leading-relaxed text-[#666] md:text-[18px]">
+          <p className="mt-4 max-w-4xl text-[15px] leading-relaxed text-[#666] sm:text-[17px] md:text-[18px]">
             Mezo&apos;s BTC CDP already works: lock BTC, mint MUSD, liquidate
             undercollateralized positions. pegforge.fun runs that same
             mechanism for tokenized equities and commodities.
@@ -428,7 +428,7 @@ export function HowSection() {
 
   return (
     <section id="how" className="bg-[#f7f7f5] py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
         <p className="eyebrow">How it works</p>
         <h2 className="section-title">Wrap. Deposit. Borrow. Manage.</h2>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -523,17 +523,17 @@ export function AppMapSection() {
   return (
     <section id="app" className="relative overflow-hidden bg-[#f7f7f5] py-20 md:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-[#fdeef1]/70 to-transparent" />
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
+        <div className="flex flex-col gap-5 sm:gap-6 md:flex-row md:items-end md:justify-between">
           <div className="min-w-0 flex-1 md:pr-8">
             <p className="eyebrow">Inside the app</p>
             <h2 className="section-title max-w-none">Live on Mezo testnet.</h2>
-            <p className="mt-4 max-w-4xl text-[17px] leading-relaxed text-[#666] md:text-[18px]">
+            <p className="mt-4 max-w-4xl text-[15px] leading-relaxed text-[#666] sm:text-[17px] md:text-[18px]">
               Wrap, borrow, repay, and move funds. Gas is official Mezo Bitcoin;
               loans are RWA → MUSD on the Desk.
             </p>
           </div>
-          <Link href="/portfolio" className="btn-primary shrink-0 self-start md:self-auto">
+          <Link href="/portfolio" className="btn-primary w-full justify-center shrink-0 self-stretch sm:w-auto sm:self-start md:self-auto">
             Enter app
           </Link>
         </div>
@@ -586,7 +586,7 @@ export function AppMapSection() {
             </p>
             <p className="text-[12px] text-[#bbb] md:hidden">Swipe →</p>
           </div>
-          <div className="scroll-soft -mx-5 flex gap-3 overflow-x-auto px-5 pb-2 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-4 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
+          <div className="scroll-soft -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:-mx-5 sm:px-5 md:mx-0 md:grid md:grid-cols-4 md:gap-3 md:overflow-visible md:px-0 md:pb-0">
             {rail.map((a, i) => (
               <motion.div
                 key={a.href}

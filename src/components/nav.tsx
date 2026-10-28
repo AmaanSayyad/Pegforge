@@ -70,8 +70,8 @@ export function Nav() {
         scrolled ? "shadow-[0_10px_30px_-20px_rgba(0,0,0,0.28)]" : "shadow-none",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-[68px] md:px-8">
-        <Logo size="sm" />
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:gap-4 sm:px-5 md:h-[68px] md:px-8">
+        <Logo size="sm" compactWordmark className="min-w-0" />
 
         <nav
           className="hidden items-center rounded-full bg-white/80 p-1 ring-1 ring-black/[0.04] md:flex"
@@ -96,10 +96,10 @@ export function Nav() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
           <Link
             href="/portfolio"
-            className="hidden rounded-full bg-[#e6005c] px-4 py-2 text-[13px] font-medium text-white transition hover:bg-[#c4004a] sm:inline-flex"
+            className="!hidden rounded-full bg-[#e6005c] px-4 py-2 text-[13px] font-medium text-white transition hover:bg-[#c4004a] md:!inline-flex"
           >
             App
           </Link>
@@ -107,7 +107,7 @@ export function Nav() {
 
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#111] ring-1 ring-black/[0.04] md:hidden"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#111] ring-1 ring-black/[0.04] md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
