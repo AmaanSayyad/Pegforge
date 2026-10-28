@@ -49,3 +49,4 @@ broadcast/**/*.lock
 
 # large local only
 .DS_Store
+.env*

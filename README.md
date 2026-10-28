@@ -111,13 +111,79 @@ Native gas on Mezo is **official Mezo Bitcoin** (chain `31611`), not a custom ga
 
 ## Architecture
 
-```text
-Sepolia / Base Sepolia          Mezo Testnet (31611)
-─────────────────────          ─────────────────────
-MockRWA (faucet)               MockRWA (portal minter)
-SourceVault.lock ──────────►   PegforgePortal.claim*
-                               RwaMUSDMarket (MUSD)
-                               Official MUSD ERC-20
+### System overview
+
+```mermaid
+flowchart TB
+  subgraph ui [pegforge.fun]
+    App[Next.js + AppKit]
+  end
+
+  subgraph src [Source testnets]
+    Sepolia[Sepolia MockRWA + SourceVault]
+    Base[Base Sepolia MockRWA + SourceVault]
+  end
+
+  subgraph mezo [Mezo testnet 31611]
+    Portal[PegforgePortal]
+    xRWA[xNVDA … xWTI]
+    Market[RwaMUSDMarket]
+    MUSD[Official MUSD]
+    Gas[Native Mezo BTC gas]
+  end
+
+  App -->|Express 1 confirm| Portal
+  App -->|Full lock then claim| Sepolia
+  App -->|Full lock then claim| Base
+  Sepolia -->|lockId| Portal
+  Base -->|lockId| Portal
+  Portal -->|mint wrap| xRWA
+  Portal -->|expressOpen| Market
+  Market -->|borrow / repay| MUSD
+  App --> Gas
+```
+
+### Contract relationships
+
+```mermaid
+flowchart LR
+  User((User))
+  Portal[PegforgePortal]
+  xTok[MockRWA on Mezo]
+  Market[RwaMUSDMarket]
+  MUSD[MUSD ERC-20]
+  Vault[SourceVault]
+  SrcTok[MockRWA on Sepolia/Base]
+
+  User -->|expressLoan / claimExpressLoan| Portal
+  Portal -->|setMinter / mint| xTok
+  Portal -->|expressOperator| Market
+  Market -->|transfer MUSD out/in| MUSD
+  User -->|deposit repay withdraw| Market
+  User -->|approve lock| Vault
+  SrcTok -->|transferFrom into vault| Vault
+  Vault -.->|lockId preimage binds claim| Portal
+```
+
+### How Pegforge sits next to Mezo BTC CDP
+
+```mermaid
+flowchart TB
+  subgraph mezoCdp [Mezo BTC CDP]
+    BTC[BTC collateral]
+    Trove[BorrowerOperations / Trove]
+    MusdCdp[MUSD minted]
+    BTC --> Trove --> MusdCdp
+  end
+
+  subgraph pegforge [Pegforge RWA desk]
+    RWA[xNVDA gold oil …]
+    Mkt[RwaMUSDMarket]
+    MusdDesk[MUSD borrowed from seeded liquidity]
+    RWA --> Mkt --> MusdDesk
+  end
+
+  MusdCdp -.->|same MUSD asset| MusdDesk
 ```
 
 ### Express (Mezo-only)
@@ -145,19 +211,33 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
   actor User
-  participant Src as Source chain (Sepolia/Base)
+  participant Src as Source chain Sepolia/Base
   participant Vault as SourceVault
   participant Portal as PegforgePortal
   participant Mkt as RwaMUSDMarket
   participant MUSD as Mezo MUSD
 
-  User->>Src: mint MockRWA (faucet)
-  User->>Vault: approve + lock(token, amount, dest=31611)
-  Vault-->>User: Locked(lockId)
-  User->>Portal: claimExpressLoan(..., lockId)
+  User->>Src: mint MockRWA faucet
+  User->>Vault: approve + lock token amount dest 31611
+  Vault-->>User: Locked lockId
+  User->>Portal: claimExpressLoan with lockId
   Note over Portal: lockId must match SourceVault preimage for msg.sender
   Portal->>Mkt: expressOpen + borrow
-  Mkt->>MUSD: transfer(user, musd)
+  Mkt->>MUSD: transfer user musd
+```
+
+### Loan lifecycle
+
+```mermaid
+stateDiagram-v2
+  [*] --> Open: Desk Express or Full claim
+  Open --> Healthy: LTV under max
+  Healthy --> Healthy: Borrow more / repay partial
+  Healthy --> Closed: Full repay + withdraw
+  Healthy --> Liquidatable: Mark move / over liq band
+  Liquidatable --> Seized: liquidate repayMusd
+  Closed --> [*]
+  Seized --> [*]
 ```
 
 ### App modules
@@ -166,10 +246,26 @@ sequenceDiagram
 flowchart LR
   Landing --> Portfolio
   Portfolio --> Desk
-  Desk -->|Express / Full| Positions
+  Desk -->|Express or Full| Positions
   Positions --> Activity
   Portfolio --> Transact
   Desk --> Pools
+```
+
+### Frontend data flow
+
+```mermaid
+flowchart TB
+  UI[Panels Portfolio Desk Positions]
+  Hooks[useBridgeFlow usePositions useActivity]
+  Wagmi[wagmi + viem + AppKit]
+  LS[localStorage activity v1]
+  Chain[Mezo / Sepolia / Base RPCs]
+
+  UI --> Hooks
+  Hooks --> Wagmi
+  Wagmi --> Chain
+  Hooks --> LS
 ```
 
 ---
@@ -429,6 +525,8 @@ NEXT_PUBLIC_SOURCE_TOKEN_SILVER=0xf6b4c0dd3355103523f031c8a1eae944a8145180
 ---
 
 ## License / notes
+
+Licensed under the [MIT License](./LICENSE). Copyright (c) 2026 Amaan Sayyad.
 
 - Demo collateral tokens are **mocks** for testnet UX; production needs issuer allowlists and real attestations.
 - Full bridge uses **lockId preimage binding** for the hackathon demo; replace with Wormhole NTT / LZ in production.

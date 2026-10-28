@@ -48,28 +48,11 @@ const columns = [
     ],
   },
   {
-    title: "Platform",
-    links: [
-      { label: "Mezo", href: "https://mezo.org" },
-      { label: "Borrow on Mezo", href: "https://mezo.org/feature/borrow" },
-      { label: "MUSD", href: "https://mezo.org/feature/musd" },
-      { label: "Earn", href: "https://mezo.org/feature/earn" },
-      { label: "Mainnet explorer", href: "https://explorer.mezo.org" },
-      { label: "Testnet app", href: "https://testnet.mezo.org" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "MUSD docs", href: "https://mezo.org/docs/users/musd/" },
-      { label: "Mezo docs", href: "https://mezo.org/docs" },
-      { label: "Mainnet explorer", href: "https://explorer.mezo.org" },
-      { label: "Testnet explorer", href: "https://explorer.test.mezo.org" },
-    ],
-  },
-  {
     title: "Community",
     links: [
+      { label: "Deck", href: SITE.deck },
+      { label: "GitHub", href: SITE.github },
+      { label: "Demo video", href: SITE.demoVideo },
       { label: "X / Twitter", href: "https://x.com/MezoNetwork" },
     ],
   },
@@ -164,7 +147,7 @@ export function Footer() {
           </span>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-8 sm:max-w-md">
           {columns.map((col) => (
             <div key={col.title}>
               <p className="text-[13px] font-medium tracking-[-0.02em] text-white">
